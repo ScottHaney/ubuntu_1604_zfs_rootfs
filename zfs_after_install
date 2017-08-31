@@ -1,0 +1,9 @@
+readonly NEWUSER=scott
+
+zfs create rpool/home/$NEWUSER
+adduser $NEWUSER
+cp -a /etc/skel/.[!.]* /home/$NEWUSER
+chown -R $NEWUSER:$NEWUSER /home/$NEWUSER
+
+usermod -a -G adm,cdrom,dip,lpadmin,plugdev,sudo $NEWUSER
+
